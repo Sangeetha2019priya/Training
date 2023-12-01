@@ -1,0 +1,151 @@
+web.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+        xmlns = "https://jakarta.ee/xml/ns/jakartaee"
+        xmlns:xsi = "https://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation = "https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+        version = "5.0"
+        metadata-complete = "false"
+>
+    <display-name> Welcome to Tomcat</display-name>
+    <description> Welcome to Tomcat</description>
+    <!-- Add Spring MVC DispatcherServlet as front controller -->
+    <servlet>
+        <servlet-name>spring</servlet-name>
+        <servlet-class>
+                org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/spring-servlet.xml</param-value>
+            </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+ 
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+</web-app>
+
+
+spring-servlet.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+
+    <!-- Enables the Spring MVC @Controller programming model -->
+    <annotation-driven />
+    <context:component-scan base-package="com.kgisl.springwebxml" />
+
+    <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+    <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <beans:property name="prefix" value="/WEB-INF/views/" />
+        <beans:property name="suffix" value=".jsp" />
+    </beans:bean>
+
+</beans:beans>
+
+
+pom.xml
+
+<project xmlns="https://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.kgisl.springwebxml</groupId>
+  <artifactId>springwebxml</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>springwebxml Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <!-- <failOnMissingWebXml>false</failOnMissingWebXml> -->
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+  <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>6.1.0</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>6.0.0</version>      <!-- Replace with the appropriate version -->
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>springwebxml</finalName>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>17</source>
+          <target>17</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.2</version>
+        <configuration>
+          <warSourceDirectory>src/main/webapp</warSourceDirectory>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>11.0.11</version>
+        <configuration>
+          <webApp>
+            <contextPath>/app</contextPath>
+          </webApp>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+
+
+public int saveRegistration(Registration registration) {
+        String query = "INSERT INTO registration12 (registration_id, event_name, athlete_name, registration_date, start_date) VALUES (?, ?, ?, ?, ?)";
+        return jdbcTemplate.update(query, 
+                registration.getRegistration_id(), 
+                registration.getEvent_name(),
+                registration.getAthlete_name(),
+                registration.getRegistration_date(),
+                registration.getStart_date());
+    }
+
+    public int updateRegistration(Registration registration) {
+        String query = "UPDATE registration12 SET event_name=?, athlete_name=?, registration_date=?, start_date=? WHERE registration_id=?";
+        return jdbcTemplate.update(query,
+                registration.getEvent_name(),
+                registration.getAthlete_name(),
+                registration.getRegistration_date(),
+                registration.getStart_date(),
+                registration.getRegistration_id());
+    }
+
+   public int deleteRegistration(int registrationId) {
+        String query = "DELETE FROM registration12 WHERE registration_id=?";
+        return jdbcTemplate.update(query, registrationId);
+    }
