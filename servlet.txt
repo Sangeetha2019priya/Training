@@ -1,0 +1,123 @@
+D:\>mvn archetype:generate -DgroupId=com.kgisl.Springcrud -DartifactId=Springcrud -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+
+cd java-web-project
+
+<properties>    <failOnMissingWebXml>false</failOnMissingWebXml></properties>
+
+<plugin>
+<artifactId>maven-compiler-plugin</artifactId>
+<version>3.5.1</version>
+<configuration>
+<source>17</source>
+<target>17</target>
+</configuration>
+</plugin>
+<plugin>
+<artifactId>maven-war-plugin</artifactId>
+<version>3.3.1</version>
+</plugin>
+
+<dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.1.0</version>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>javax.servlet.jsp</groupId>
+        <artifactId>javax.servlet.jsp-api</artifactId>
+        <version>2.3.1</version>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>jstl</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version>
+    </dependency>
+
+<plugins>
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <port>9090</port>
+          <path>/</path>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <!-- put your configurations here -->
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+
+mvn clean install
+mvn tomcat7:run
+
+gson dependency:::
+------------------------------------
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.8.8</version> <!-- Use the latest version -->
+</dependency>
+
+
+mysql dependency:::
+-------------------------------------
+<dependency>
+  <groupId>mysql</groupId>
+  <artifactId>mysql-connector-java</artifactId>
+  <version>8.0.33</version>
+</dependency>
+
+
+
+import java.io.IOException;  
+import java.io.PrintWriter;  
+  
+import javax.servlet.RequestDispatcher;  
+import javax.servlet.ServletException;  
+import javax.servlet.http.HttpServlet;  
+import javax.servlet.http.HttpServletRequest;  
+import javax.servlet.http.HttpServletResponse;  
+  
+  
+public class FirstServlet extends HttpServlet {  
+public void doPost(HttpServletRequest request, HttpServletResponse response)  
+        throws ServletException, IOException {  
+  
+    response.setContentType("text/html");  
+    PrintWriter out = response.getWriter();  
+          
+    String n=request.getParameter("username");  
+    String p=request.getParameter("userpass");  
+    System.out.println(n);
+     System.out.println(p);
+
+          
+    if(LoginDao.validate(n, p)){  
+        RequestDispatcher rd=request.getRequestDispatcher("servlet2");  
+        rd.forward(request,response);  
+    }  
+    else{  
+        out.print("Sorry username or password error");  
+        RequestDispatcher rd=request.getRequestDispatcher("index.html");  
+        rd.include(request,response);  
+    }  
+          
+    out.close();  
+    }  
+} 
