@@ -1,0 +1,26 @@
+2023-12-11T09:21:20.198+05:30  INFO 36572 --- [main] com.example.File.FileApplication         : Starting FileApplication using Java 17.0.3.1 with PID 36572 (D:\Sangeetha priya\Java\Springboot-4D\file\File\File\target\classes started by sangeetha.pd in D:\Sangeetha priya\Java\Springboot-4D\file\File\File)
+2023-12-11T09:21:20.219+05:30  INFO 36572 --- [main] com.example.File.FileApplication         : No active profile set, falling back to 1 default profile: "default"
+2023-12-11T09:21:21.279+05:30  INFO 36572 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-12-11T09:21:21.350+05:30  INFO 36572 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 1 JPA repository interface.
+2023-12-11T09:21:21.910+05:30  INFO 36572 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2023-12-11T09:21:21.932+05:30  INFO 36572 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-12-11T09:21:21.933+05:30  INFO 36572 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2023-12-11T09:21:22.036+05:30  INFO 36572 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-12-11T09:21:22.036+05:30  INFO 36572 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1771 ms
+2023-12-11T09:21:22.071+05:30  INFO 36572 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-12-11T09:21:22.252+05:30  INFO 36572 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2023-12-11T09:21:22.254+05:30  INFO 36572 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-12-11T09:21:22.254+05:30  INFO 36572 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2'. Database available at 'jdbc:h2:mem:testdb'
+2023-12-11T09:21:22.374+05:30  INFO 36572 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-12-11T09:21:22.507+05:30  INFO 36572 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2023-12-11T09:21:22.570+05:30  INFO 36572 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2023-12-11T09:21:22.962+05:30  INFO 36572 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-12-11T09:21:23.007+05:30  WARN 36572 --- [main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2023-12-11T09:21:23.858+05:30  INFO 36572 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2023-12-11T09:21:24.036+05:30  INFO 36572 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-12-11T09:21:24.291+05:30  WARN 36572 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-12-11T09:21:24.707+05:30  INFO 36572 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2023-12-11T09:21:24.707+05:30  INFO 36572 --- [main] com.example.File.FileApplication         : Started FileApplication in 5.105 seconds (process running for 5.658)
+2023-12-11T09:22:29.250+05:30  INFO 36572 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-12-11T09:22:29.251+05:30  INFO 36572 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-12-11T09:22:29.252+05:30  INFO 36572 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
