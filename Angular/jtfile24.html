@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<body ng-app="">
+    <div ng-init="myVar = 'http://www.javatpoint.com/java-tutorial'">
+        <h1>Java Tutorials</h1>
+        <p>Go to <a ng-href="{{myVar}}">{{myVar}}</a> to learn java.</p>
+    </div>
+    <p>You can use here original href attribute, but in AngularJS, the ng-href attribute is safer.</p>
+</body>
+
+</html>
