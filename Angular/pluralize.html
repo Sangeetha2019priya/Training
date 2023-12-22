@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+
+<body ng-app="pluralizeExample">
+    <script>
+        angular.module('pluralizeExample', [])
+            .controller('ExampleController', ['$scope', function ($scope) {
+                $scope.person1 = 'Ajeet';
+                $scope.person2 = 'Shashank';
+                $scope.personCount = 1;
+            }]);  
+    </script>
+    <div ng-controller="ExampleController">
+        <label>Person 1:<input type="text" ng-model="person1" value="Ajeet" /></label><br />
+        <label>Person 2:<input type="text" ng-model="person2" value="Shashank" /></label><br />
+        <label>Number of People:<input type="text" ng-model="personCount" value="1" /></label><br />
+
+        Without Offset:
+        <ng-pluralize count="personCount" when="{'0': 'Nobody is viewing.',  
+                       'one': '1 person is viewing.',  
+                       'other': '{} people are viewing.'}">
+        </ng-pluralize>
+    </div>
+</body>
+
+</html>
